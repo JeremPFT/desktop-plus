@@ -32,7 +32,7 @@
 ;;     Emacs restarts, two functions are provided to manipulate sessions by
 ;;     name.
 ;;
-;;     `desktop+-create': create a new session and give it a name.
+;;     `desktop+-save': save current session and give it a name.
 ;;
 ;;     `desktop+-load': change the current session; the new session to be loaded
 ;;          is identified by its name, as given during session creation using
@@ -75,7 +75,7 @@ and return a frame title format suitable for setting
 ;; ** Entry points
 
 ;;;###autoload
-(defun desktop+-create (name)
+(defun desktop+-save (name)
   "Create a new session, identified by a name.
 The session is created in a subdirectory of `desktop+-base-dir'.
 It can afterwards be reloaded using `desktop+-load'.
@@ -99,16 +99,16 @@ automatically named after the current working directory."
   (desktop-save-mode 1))
 
 ;;;###autoload
-(defun desktop+-create-auto ()
+(defun desktop+-save-auto ()
   "Create a new session, identified by the current working directory.
 The session is created in a subdirectory of `desktop+-base-dir'.
 It can afterwards be reloaded using `desktop+-load'."
   (interactive)
-  (desktop+-create ""))
+  (desktop+-save ""))
 
 ;;;###autoload
 (defun desktop+-load (name)
-  "Load a session previously created using `desktop+-create'.
+  "Load a session previously created using `desktop+-save'.
 NAME is the name which was given at session creation.  When
 called interactively, it is asked in the minibuffer with
 auto-completion.
@@ -129,7 +129,7 @@ automatically named after the current working directory."
 
 ;;;###autoload
 (defun desktop+-load-auto ()
-  "Load a session previously created using `desktop+-create-auto'.
+  "Load a session previously created using `desktop+-save-auto'.
 The session is identified by the current working directory."
   (interactive)
   (desktop+-load ""))
