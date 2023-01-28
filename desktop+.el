@@ -82,7 +82,15 @@ It can afterwards be reloaded using `desktop+-load'.
 
 As a special case, if NAME is left blank, the session is
 automatically named after the current working directory."
-  (interactive "MDesktop name: ")
+  (interactive
+   (let ((desktops-found
+          (remove "." (remove ".." (directory-files desktop+-base-dir)))))
+     (list
+      (if (functionp 'ido-completing-read)
+          (ido-completing-read "Find desktop: " desktops-found)
+        (completing-read "Find desktop: " desktops-found)))
+     ))
+
   (desktop-kill)
   (setq desktop-dirname (desktop+--dirname name))
   (make-directory desktop-dirname 'parents)
@@ -108,11 +116,13 @@ auto-completion.
 As a special case, if NAME is left blank, the session is
 automatically named after the current working directory."
   (interactive
-   (list
-    (completing-read "Desktop name: "
-                     (remove "."
-                             (remove ".."
-                                     (directory-files desktop+-base-dir))))))
+   (let ((desktops-found
+          (remove "." (remove ".." (directory-files desktop+-base-dir)))))
+     (list
+      (if (functionp 'ido-completing-read)
+          (ido-completing-read "Find desktop: " desktops-found)
+        (completing-read "Find desktop: " desktops-found)))
+     ))
   (desktop-change-dir (desktop+--dirname name))
   (desktop+--set-frame-title)
   (desktop-save-mode 1))
