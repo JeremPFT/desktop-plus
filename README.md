@@ -47,7 +47,7 @@ Otherwise, you can install it manually. First install `desktop+` dependencies:
 
 Two functions are defined to manipulate desktop sessions by name:
 
-- `desktop-create`: create a new session and give it a name.
+- `desktop-save`: create a new session and give it a name or save current session.
 
 - `desktop-load`: change the current session; the new session to be loaded is identified by its name, as given during session creation using `desktop-create`. The currently active session is identified in the title bar.
 

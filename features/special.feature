@@ -2,7 +2,7 @@ Feature: Handle special buffers
 
   Scenario: Handle terminal buffer
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "terminal" RET
+    When I call M-x "desktop+-save" RET "terminal" RET
     Then Desktop session "terminal" should exist
 
     When I switch to directory "/tmp"
@@ -24,7 +24,7 @@ Feature: Handle special buffers
 
   Scenario: Handle compilation buffer
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "compilation" RET
+    When I call M-x "desktop+-save" RET "compilation" RET
     Then Desktop session "compilation" should exist
 
     When I switch to directory "/tmp"
@@ -46,7 +46,7 @@ Feature: Handle special buffers
 
   Scenario: Handle indirect buffer
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "indirect-buffer" RET
+    When I call M-x "desktop+-save" RET "indirect-buffer" RET
     Then Desktop session "indirect-buffer" should exist
 
     And  I start an action chain
@@ -69,7 +69,7 @@ Feature: Handle special buffers
 
   Scenario: Handle org agenda buffer
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "org-agenda-list" RET
+    When I call M-x "desktop+-save" RET "org-agenda-list" RET
     Then Desktop session "org-agenda-list" should exist
 
     Given I start an action chain
@@ -90,7 +90,7 @@ Feature: Handle special buffers
 
   Scenario: Handle org todo buffer
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "org-todo-list" RET
+    When I call M-x "desktop+-save" RET "org-todo-list" RET
     Then Desktop session "org-todo-list" should exist
 
     Given I start an action chain
@@ -111,7 +111,7 @@ Feature: Handle special buffers
 
   Scenario: Handle man buffer
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "man" RET
+    When I call M-x "desktop+-save" RET "man" RET
     Then Desktop session "man" should exist
 
     When  I start an action chain
@@ -133,7 +133,7 @@ Feature: Handle special buffers
 
   Scenario: Handle shell directory
     Given I am in a fresh Emacs instance
-    When I call M-x "desktop+-create" RET "shell" RET
+    When I call M-x "desktop+-save" RET "shell" RET
     Then Desktop session "shell" should exist
 
     When I switch to directory "/tmp"
