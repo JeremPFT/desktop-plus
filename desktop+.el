@@ -75,6 +75,12 @@ and return a frame title format suitable for setting
 ;; ** Entry points
 
 ;;;###autoload
+(defun desktop+-current ()
+  "Return current desktop name"
+  (interactive)
+  (message desktop-dirname))
+
+;;;###autoload
 (defun desktop+-save (name)
   "Create a new session, identified by a name.
 The session is created in a subdirectory of `desktop+-base-dir'.
