@@ -78,7 +78,7 @@ and return a frame title format suitable for setting
 (defun desktop+-current ()
   "Return current desktop name"
   (interactive)
-  (message desktop-dirname))
+  (message (f-base desktop-dirname)))
 
 ;;;###autoload
 (defun desktop+-save (name)
