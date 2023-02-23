@@ -94,10 +94,10 @@ automatically named after the current working directory."
    (let ((desktops-found
           (remove "." (remove ".." (directory-files desktop+-base-dir)))))
      (list
-      (if (functionp 'ido-completing-read)
-          (ido-completing-read "Find desktop: " desktops-found)
-        (completing-read "Find desktop: " desktops-found)))
-     ))
+      (cond
+       ((functionp 'ivy-read) (ivy-read "Find desktop: " desktops-found))
+       ((functionp 'ido-completing-read) (ido-completing-read "Find desktop: " desktops-found))
+       (t (completing-read "Find desktop: " desktops-found))))))
 
   (desktop-kill)
   (setq desktop-dirname (desktop+--dirname name))
@@ -127,10 +127,10 @@ automatically named after the current working directory."
    (let ((desktops-found
           (remove "." (remove ".." (directory-files desktop+-base-dir)))))
      (list
-      (if (functionp 'ido-completing-read)
-          (ido-completing-read "Find desktop: " desktops-found)
-        (completing-read "Find desktop: " desktops-found)))
-     ))
+      (cond
+       ((functionp 'ivy-read) (ivy-read "Find desktop: " desktops-found))
+       ((functionp 'ido-completing-read) (ido-completing-read "Find desktop: " desktops-found))
+       (t (completing-read "Find desktop: " desktops-found))))))
   (desktop-change-dir (desktop+--dirname name))
   (desktop+--set-frame-title)
   (desktop-save-mode 1))
